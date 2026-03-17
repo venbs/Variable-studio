@@ -1,36 +1,40 @@
 .focus-demo-container {
   width: 100%;
   height: 100%;
+  padding: 4vw 8vw;
   display: flex;
-  justify-content: center;
   align-items: center;
   background-color: #000;
-  overflow: hidden;
+  overflow: auto;
   cursor: crosshair;
-  /* To emphasize interaction */
 }
 
-.focus-grid {
-  display: grid;
-  grid-template-columns: repeat(20, 1fr);
-  grid-template-rows: repeat(15, 1fr);
-  gap: 1vw;
-  width: 90vw;
-  height: 90vh;
-  padding: 2vw;
+.focus-text-content {
+  color: #c9c9c9;
+  font-size: min(5vw, 60px);
+  line-height: 1.4;
+  text-align: left;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.focus-word {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .focus-char {
   font-family: 'Roboto Flex', sans-serif;
-  color: #fff;
-  font-size: min(4vw, 4vh);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
   user-select: none;
-  /* Initial baseline state */
-  font-variation-settings: "wght" 100;
-  /* Smooth transition for when mouse leaves or moves fast */
-  transition: font-variation-settings 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* Baseline state for weight and width */
+  font-variation-settings: "wght" 100, "wdth" 100;
+  /* Transition for when moving out of the radius */
+  transition: font-variation-settings 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
   will-change: font-variation-settings;
+}
+
+/* Spaces shouldn't be affected by variable font transitions */
+.focus-space {
+  display: inline-block;
 }
