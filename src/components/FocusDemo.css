@@ -28,7 +28,7 @@
   display: inline-block;
   user-select: none;
   /* Baseline state for weight and width */
-  font-variation-settings: "wght" 100, "wdth" 100;
+  font-variation-settings: "wght" 100, "wdth" 100, "slnt" 0;
   /* Transition for when moving out of the radius */
   transition: font-variation-settings 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
   will-change: font-variation-settings;

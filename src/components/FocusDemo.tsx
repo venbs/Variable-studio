@@ -50,6 +50,10 @@ export default function FocusDemo() {
       const mouseX = e.clientX - containerRect.left;
       const mouseY = e.clientY - containerRect.top;
 
+      // Calculate global slant based on horizontal mouse position (0 on left, -10 on right)
+      const slantRatio = e.clientX / window.innerWidth;
+      const slantVal = slantRatio * -10;
+
       charRefs.current.forEach((el) => {
         if (!el) return;
         
@@ -77,14 +81,14 @@ export default function FocusDemo() {
         // Use a slight width expansion to make it feel more dynamic
         const widthVal = 100 + (weight - 100) / 800 * 25; // 100 to 125 wdth
         
-        el.style.fontVariationSettings = `"wght" ${finalWeight.toFixed(0)}, "wdth" ${widthVal.toFixed(0)}`;
+        el.style.fontVariationSettings = `"wght" ${finalWeight.toFixed(0)}, "wdth" ${widthVal.toFixed(0)}, "slnt" ${slantVal.toFixed(2)}`;
       });
     };
 
     const handleMouseLeave = () => {
       charRefs.current.forEach((el) => {
         if (el) {
-          el.style.fontVariationSettings = `"wght" 100, "wdth" 100`;
+          el.style.fontVariationSettings = `"wght" 100, "wdth" 100, "slnt" 0`;
         }
       });
     };
