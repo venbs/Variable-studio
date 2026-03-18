@@ -7,6 +7,13 @@
   --accent-color: #4a9eff;
 }
 
+@font-face {
+  font-family: 'Roboto Flex Local';
+  src: url('/fonts/RobotoFlex-Variable.ttf') format('truetype');
+  font-weight: 100 1000;
+  font-display: swap;
+}
+
 body {
   margin: 0;
   padding: 0;

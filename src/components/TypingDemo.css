@@ -1,0 +1,104 @@
+.typing-demo-container {
+  width: 100%;
+  height: 100%;
+  padding: 4vw 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  overflow: auto;
+  cursor: text;
+}
+
+.typing-glass-box {
+  width: 100%;
+  max-width: 900px;
+  min-height: 200px;
+  background-color: rgba(20, 20, 20, 0.4);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 40px 50px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+.typing-glass-box:focus-within {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 30px rgba(74, 158, 255, 0.1);
+}
+
+.typing-hidden-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: text;
+  color: transparent;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1px; /* Keep small to prevent scrolling issues */
+  pointer-events: none; /* Let the container handle clicks */
+}
+
+.typing-display {
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto Flex Local', sans-serif;
+  font-size: min(4vw, 42px);
+  line-height: 1.6;
+  color: #c9c9c9;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  position: relative;
+}
+
+.typing-placeholder {
+  color: rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-variation-settings: "wght" 300;
+}
+
+.typing-char {
+  display: inline;
+  /* styles are purely controlled by JS rAF loop now! */
+  will-change: font-variation-settings, color, text-shadow;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.1em;
+  background-color: var(--accent-color, #4a9eff);
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite, cursorColorCycle 10s linear infinite;
+  margin: 0 -1.5px;
+  position: relative;
+  z-index: 2;
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--accent-color, #4a9eff);
+  will-change: opacity, filter;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes cursorColorCycle {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
