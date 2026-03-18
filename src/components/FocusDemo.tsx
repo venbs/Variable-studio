@@ -78,17 +78,14 @@ export default function FocusDemo() {
 
         const finalWeight = Math.max(100, Math.min(900, weight));
         
-        // Use a slight width expansion to make it feel more dynamic
-        const widthVal = 100 + (weight - 100) / 800 * 25; // 100 to 125 wdth
-        
-        el.style.fontVariationSettings = `"wght" ${finalWeight.toFixed(0)}, "wdth" ${widthVal.toFixed(0)}, "slnt" ${slantVal.toFixed(2)}`;
+        el.style.fontVariationSettings = `"wght" ${finalWeight.toFixed(0)}, "slnt" ${slantVal.toFixed(2)}`;
       });
     };
 
     const handleMouseLeave = () => {
       charRefs.current.forEach((el) => {
         if (el) {
-          el.style.fontVariationSettings = `"wght" 100, "wdth" 100, "slnt" 0`;
+          el.style.fontVariationSettings = `"wght" 100, "slnt" 0`;
         }
       });
     };
